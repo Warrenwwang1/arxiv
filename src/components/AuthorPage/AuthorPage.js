@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import convert from 'xml-js';
-import ArticleListItem from './ArticleListItem'
-import Banner from './Banner'
+import ArticleListItem from '../ArticleListItem'
+import Banner from '../Banner'
 
 
  import "./AuthorPage.css";

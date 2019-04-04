@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import convert from 'xml-js';
-import ArticleListItem from './ArticleListItem.js'
-import Banner from './Banner.js'
+import ArticleListItem from '../ArticleListItem.js'
+import Banner from '../Banner.js'
 import { Link } from 'react-router-dom';
 import './NewArticles.css'
 

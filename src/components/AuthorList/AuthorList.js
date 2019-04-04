@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import convert from 'xml-js';
-import ArticleListItem from './ArticleListItem.js'
+import ArticleListItem from '../ArticleListItem.js'
 import { Link } from 'react-router-dom';
-import Banner from './Banner'
+import Banner from '../Banner'
 
 class AuthorList extends Component {
 

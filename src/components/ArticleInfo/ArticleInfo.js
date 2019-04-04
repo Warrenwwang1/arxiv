@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./ArticleInfo.css";
 import { Link } from 'react-router-dom';
-import Banner from './Banner'
+import Banner from '../Banner'
 
 
 

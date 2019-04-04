@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import NewArticles from './components/NewArticles';
-import ArticleInfo from './components/ArticleInfo';
-import AuthorPage from './components/AuthorPage';
- import AuthorList from './components/AuthorList';
+import NewArticles from './components/NewArticles/NewArticles';
+import ArticleInfo from './components/ArticleInfo/ArticleInfo';
+import AuthorPage from './components/AuthorPage/AuthorPage';
+ import AuthorList from './components/AuthorList/AuthorList';
 
 import './App.css';
 
