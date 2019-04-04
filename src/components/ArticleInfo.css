@@ -1,0 +1,24 @@
+.articleInfoContents {
+    padding-left:7%;
+    text-align:left;
+}
+
+.articleTitle {
+    width:60%;
+
+
+}
+.textBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.summaryDiv{
+
+    width:68%;
+    padding-left:7%;
+}
+
+.articleSummary {
+    line-height: 1.5em;
+}

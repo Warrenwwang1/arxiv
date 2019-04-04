@@ -1,0 +1,16 @@
+.article{
+    text-align: left;
+    vertical-align: middle;
+    background-color: #E7E7E7;
+    width: 70%;
+    height:4vh;
+
+
+}
+
+.itemTitle {
+
+    position: relative;
+    left:2%;
+    top:1vh; 
+}

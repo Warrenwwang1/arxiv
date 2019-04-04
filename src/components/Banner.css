@@ -1,0 +1,16 @@
+.banner {
+    position: relative;
+    height:10vh;
+    width:100vw;
+    background: #BE2222;
+    color: white;
+    text-align: left;
+}
+
+.arxiv {
+    display: inline;
+    font-size:48px;
+    position: relative;
+    left:2%;
+
+}
