@@ -88,7 +88,7 @@ class AuthorList extends Component {
         <Link style={{ textDecoration: 'none', color: 'black' }} to={{pathname: "/all-authors"}}>Authors</Link>
       </div>
         <div className = "articlesTitle">
-        <h1 className = "aTitle">New Authors</h1>
+        <h1 className = "aTitle">Prolific Authors</h1>
       </div>
           <ul>
             {this.state.prolificAuthors.map(entry => (
