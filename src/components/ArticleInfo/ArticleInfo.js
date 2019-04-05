@@ -3,15 +3,12 @@ import "./ArticleInfo.css";
 import { Link } from 'react-router-dom';
 import Banner from '../Banner'
 
-
-
 class ArticleInfo extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        console.log(this.props.location.state.authors)
         return(
             
             <div className="articleInfo">
@@ -26,8 +23,6 @@ class ArticleInfo extends Component {
                             pathname: "/author-page",
                             state: {
                                 name:x.name._text
-                            
-
                                 }
                             }}>
                         <p>{x.name._text}</p>

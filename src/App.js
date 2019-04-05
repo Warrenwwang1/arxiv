@@ -11,7 +11,8 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter><div className="App">
+      <BrowserRouter>
+      <div className="App">
       <Switch>
         <Route exact path='/' component={NewArticles} />
         <Route exact path='/article-info' component={ArticleInfo} />

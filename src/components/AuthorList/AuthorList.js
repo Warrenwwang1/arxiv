@@ -28,57 +28,30 @@ class AuthorList extends Component {
       this.setState({
         APIdata: r_json
       })
-      console.log("MY API")
-      console.log(this.state.APIdata)
-  
-  
       this.findProlificAuthors()
   
   }
   
-  async findProlificAuthors() {
-    let feed = this.state.APIdata.feed
-    var start = 0;
-    var max = 1000;
-    var mostWritten = 0;
-    var authorMost = "";
+  async findProlificAuthors() { 
+    //this function looks at the feed from the API and maps each 
+    //author to the amount of articles they've written and also 
+    //creates a sorted array of the most prolific to least prolific authors
 
+    let feed = this.state.APIdata.feed
     var article;
     var authorsJSON = {};
-    var mostArr = [];
-    console.log(feed.entry)
+
     for(var i = 0; i < feed.entry.length; i++) {
         var article = feed.entry[i];
-        console.log(i)
-        //  if (article.updated._text.charAt(6) ==2) { //check if older than 30 days
-        //      break;
-        //  } 
-        //else if (i==feed.entry.length-1){ //need to get next 100 results and restart the loop
-        //     start += 1000;
-
-        //     var res = await fetch('http://export.arxiv.org/api/query?search_query=all&start=' + start +'&max_results='+ max +'&sortBy=lastUpdatedDate&sortOrder=descending')
-        //     var res_txt = await res.text()
-        //     var res_json = convert.xml2js(res_txt, {compact: true, spaces: 4})
-        //     feed = res_json.feed
-        //     console.log(feed)
-        //     i = 0
-        // } 
     
         if (article.author instanceof Array) {
             var names = article.author.map(author => author.name._text); //an array of authors for current article
-            // console.log(names)
 
             for (var j in names) {
                 if(authorsJSON[names[j]] == null) {
                     authorsJSON[names[j]] = 1;
                 } else {
-                    authorsJSON[names[j]] += 1;
-                    if (authorsJSON[names[j]] >= mostWritten) {
-                        mostWritten = authorsJSON[names[j]];
-                        console.log(names[j])
-                        mostArr.push(names[j])
-                        authorMost = names[j]
-                    }
+                    authorsJSON[names[j]] += 1;                   
                 }
             }
         } else {
@@ -88,11 +61,6 @@ class AuthorList extends Component {
                 
             } else {
                 authorsJSON[names] += 1;
-                if (authorsJSON[names] >= mostWritten) {
-                    mostWritten = authorsJSON[names];
-                    mostArr.push(names[j])
-                    authorMost = names
-                }
             }
         }
     }
@@ -108,11 +76,8 @@ class AuthorList extends Component {
         authorToNum: authorsJSON,
         prolificAuthors: authorsArr.slice(0, 10)
     })
-     console.log(this.state.prolificAuthors)
-
 
   }
-  
   
     render() {
       return (
@@ -126,16 +91,14 @@ class AuthorList extends Component {
         <h1 className = "aTitle">New Authors</h1>
       </div>
           <ul>
-            {this.state.prolificAuthors.map(entry => 
-              (
-                 <Link style={{ textDecoration: 'none', color: 'black' }} to={{
+            {this.state.prolificAuthors.map(entry => (
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={{
                   pathname: "/author-page",
                   state: {
                       name: entry[0]
                   }
               }}>
                   <ArticleListItem title = {entry[0] + " has written " + entry[1] + " articles"}></ArticleListItem>
-  
                </Link>
                 
                  ))
