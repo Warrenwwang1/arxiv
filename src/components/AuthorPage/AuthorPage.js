@@ -13,42 +13,52 @@ class AuthorPage extends Component {
         };
     }
 
-    async componentDidMount() { 
+    async componentDidMount() {
         //fetches the articles written by this author
         var name = this.props.location.state.name;
         var space = name.indexOf(" ");
         var firstName = name.slice(0, space);
         var lastName = name.slice(space);
 
-        let res1 = await fetch('http://export.arxiv.org/api/query?search_query=au:' + firstName + "+AND+" +lastName + '&sortBy=lastUpdatedDate&sortOrder=descending')
+        let res1 = await fetch('http://export.arxiv.org/api/query?search_query=au:' + firstName + "+AND+" + lastName + '&sortBy=lastUpdatedDate&sortOrder=descending')
         let res_txt1 = await res1.text()
-        let res_json1 = convert.xml2js(res_txt1, {compact: true, spaces: 4})
-        let feed= res_json1.feed;
+        let res_json1 = convert.xml2js(res_txt1, { compact: true, spaces: 4 })
+        let feed = res_json1.feed;
 
         if (feed.entry != null) {
-            this.setState({
-                titles: feed.entry.map(article => article.title._text)
-            })
+            if (feed.entry instanceof Array) {
+                this.setState({
+                    titles: feed.entry.map(article => article.title._text)
+                })
 
+            } else {
+                this.setState({
+                    titles: [feed.entry.title._text]
+                })
+            }
+        } else {
+            this.setState({
+                titles: ["No artles to display. Author may be invalid."]
+            })
         }
-          
-        
+
+
     }
 
     render() {
-        return(
+        return (
             <div className="authorPage">
-            <Banner></Banner>
-            <div className="authorPageContents">
-            <p className ="authorTitle">{this.props.location.state.name}</p>
+                <Banner></Banner>
+                <div className="authorPageContents">
+                    <p className="authorTitle">{this.props.location.state.name}</p>
 
-            <h3>Recent Articles</h3>
-            <dl>{
-                this.state.titles.map(title => 
-                (<ArticleListItem title = {title}></ArticleListItem>)
-                )}
-            </dl>
-            </div>
+                    <h3>Recent Articles</h3>
+                    <dl>{
+                        this.state.titles.map(title =>
+                            (<ArticleListItem title={title}></ArticleListItem>)
+                        )}
+                    </dl>
+                </div>
             </div>
         );
     }

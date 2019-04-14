@@ -9,33 +9,33 @@ class ArticleInfo extends Component {
     }
 
     render() {
-        return(
-            
-            <div className="articleInfo">
-            <Banner></Banner>
-            <div className="articleInfoContents">
-                <h1 className="articleTitle">{this.props.location.state.title}</h1>
-                <div className = "textBody">
-                <div className = "authorDiv">
-                    <h2>Authors</h2>
-                    <dl className="articleAuthors">{this.props.location.state.authors.map(x => (
-                        <Link to={{
-                            pathname: "/author-page",
-                            state: {
-                                name:x.name._text
-                                }
-                            }}>
-                        <p>{x.name._text}</p>
-                        </Link>
-                    ))}</dl>
-                </div>
-                <div className = "summaryDiv">
-                    <h2>Summary</h2>
+        return (
 
-                    <p className="articleSummary">{this.props.location.state.summary}</p>
+            <div className="articleInfo">
+                <Banner></Banner>
+                <div className="articleInfoContents">
+                    <h1 className="articleTitle">{this.props.location.state.title}</h1>
+                    <div className="textBody">
+                        <div className="authorDiv">
+                            <h2>Authors</h2>
+                            <dl className="articleAuthors">{this.props.location.state.authors.map(x => (
+                                <Link to={{
+                                    pathname: "/author-page",
+                                    state: {
+                                        name: x.name._text
+                                    }
+                                }}>
+                                    <p>{x.name._text}</p>
+                                </Link>
+                            ))}</dl>
+                        </div>
+                        <div className="summaryDiv">
+                            <h2>Summary</h2>
+
+                            <p className="articleSummary">{this.props.location.state.summary}</p>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
         );
     }
